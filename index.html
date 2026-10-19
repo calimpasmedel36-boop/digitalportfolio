@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Medel A. Calimpas — Portfolio</title>
+<meta name="description" content="Medel A. Calimpas — AI Developer, Software Engineer, Web & Systems Developer. POS, inventory, databases, authentication & security.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<script>document.documentElement.classList.add('js')</script>
+
+<style>
+/* ============ TOKENS & BASE ============ */
+:root{
+  --bg:#0b0b12;
+  --bg-soft:#10101a;
+  --card:#141420;
+  --card2:#1a1a28;
+  --line:rgba(255,255,255,.08);
+  --line2:rgba(255,255,255,.16);
+  --text:#f4f4f8;
+  --muted:#9c9cae;
+  --gold:#f5c04e;
+  --gold-ink:#1a1305;
+  --sans:'Poppins',sans-serif;
+  --mono:'JetBrains Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{
+  font-family:var(--sans);
+  color:var(--text);
+  background:var(--bg);
+  background-image:radial-gradient(rgba(255,255,255,.035) 1px,transparent 1px);
+  background-size:26px 26px;
+  line-height:1.7;
+  font-size:16px;
+  overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+img{display:block}
+::selection{background:var(--gold);color:var(--gold-ink)}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+::-webkit-scrollbar{width:10px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:#262636;border-radius:6px}
+.wrap{max-width:1240px;margin-inline:auto;padding-inline:clamp(20px,5%,64px)}
+
+/* ============ NAV ============ */
+.nav{position:fixed;inset-inline:0;top:0;z-index:70;display:flex;align-items:center;justify-content:space-between;padding:18px clamp(20px,5%,64px);transition:background .35s,padding .35s,border-color .35s;border-bottom:1px solid transparent}
+.nav.scrolled{background:rgba(11,11,18,.92);backdrop-filter:blur(14px);border-color:var(--line);padding-block:12px}
+.logo{font-weight:800;font-size:1.3rem;letter-spacing:.02em}
+.logo span{color:var(--gold)}
+.nav-links{display:flex;gap:34px}
+.nav-links a{font-size:.78rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);position:relative;transition:color .25s}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-6px;height:2px;width:0;background:var(--gold);transition:width .3s}
+.nav-links a:hover,.nav-links a.active{color:var(--text)}
+.nav-links a.active::after,.nav-links a:hover::after{width:100%}
+.nav-right{display:flex;align-items:center;gap:16px}
+.nav-hire{background:var(--gold);color:var(--gold-ink);font-size:.72rem;font-weight:700;letter-spacing:.14em;padding:10px 20px;border-radius:40px;transition:filter .2s,transform .2s}
+.nav-hire:hover{filter:brightness(1.06);transform:translateY(-2px)}
+.burger{display:none;flex-direction:column;justify-content:center;align-items:center;gap:6px;width:44px;height:44px;background:none;border:1px solid var(--line2);border-radius:10px;cursor:pointer}
+.burger span{display:block;width:18px;height:2px;background:var(--text);transition:transform .3s,opacity .3s}
+.burger.on span:nth-child(1){transform:translateY(8px) rotate(45deg)}
+.burger.on span:nth-child(2){opacity:0}
+.burger.on span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+
+/* mobile menu */
+.mmenu{position:fixed;inset:0;z-index:65;background:rgba(11,11,18,.98);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:20px;opacity:0;pointer-events:none;transition:opacity .35s}
+.mmenu.open{opacity:1;pointer-events:auto}
+.mmenu a{font-size:1.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;opacity:0;transform:translateY(16px);transition:transform .45s,opacity .45s,color .2s}
+.mmenu.open a{opacity:1;transform:none}
+.mmenu a:hover{color:var(--gold)}
+.mmenu .mm-mail{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--muted);margin-top:26px;opacity:1;transform:none}
+
+/* ============ HERO ============ */
+.hero{min-height:100vh;display:grid;grid-template-columns:1.05fr .95fr;gap:5vw;align-items:center;padding:130px clamp(20px,5%,64px) 90px;max-width:1240px;margin-inline:auto}
+.hello{font-family:var(--mono);font-size:11px;letter-spacing:.3em;color:var(--gold)}
+h1{font-size:clamp(3.6rem,9.5vw,7.6rem);font-weight:900;line-height:.95;letter-spacing:-.02em;margin-top:18px}
+h1 .line{display:block;overflow:hidden}
+h1 .line span{display:block;transform:translateY(110%);animation:lift .9s cubic-bezier(.2,.8,.2,1) forwards}
+h1 .line:nth-child(2) span{animation-delay:.14s;color:var(--gold)}
+@keyframes lift{to{transform:none}}
+.hero-name{margin-top:26px;font-size:1.25rem;font-weight:700}
+.hero-name span{color:var(--gold)}
+.hero-role{margin-top:6px;font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--muted)}
+.hero-role i{color:var(--gold);font-size:7px;margin:0 8px;vertical-align:2px}
+.hero-p{margin-top:22px;max-width:46ch;color:var(--muted);font-size:.98rem}
+.hero-p b{color:var(--text);font-weight:600}
+
+/* socials + buttons */
+.socials{display:flex;gap:12px;margin-top:32px}
+.socials a{width:46px;height:46px;border-radius:50%;border:1px solid var(--line2);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:1rem;transition:background .25s,color .25s,transform .25s,border-color .25s}
+.socials a:hover{background:var(--gold);border-color:var(--gold);color:var(--gold-ink);transform:translateY(-4px)}
+.btns{display:flex;gap:14px;margin-top:26px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:.85rem;letter-spacing:.08em;padding:15px 32px;border-radius:50px;transition:transform .2s,filter .2s,border-color .25s,color .25s;cursor:pointer}
+.btn i{transition:transform .25s}
+.btn-gold{background:var(--gold);color:var(--gold-ink)}
+.btn-gold:hover{transform:translateY(-3px);filter:brightness(1.05)}
+.btn-gold:hover i{transform:translateX(4px)}
+.btn-ghost{border:1px solid var(--line2);color:var(--text)}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-3px)}
+
+/* hero photo */
+.hero-photo{position:relative;justify-self:center;opacity:0;transform:translateX(44px);animation:phin 1s .45s cubic-bezier(.2,.7,.2,1) forwards}
+@keyframes phin{to{opacity:1;transform:none}}
+.photo-frame{position:relative;width:min(390px,82vw);aspect-ratio:3/4}
+.photo-frame::before{content:"";position:absolute;inset:0;border:2px solid var(--gold);border-radius:28px;transform:translate(18px,18px);opacity:.55}
+.photo{position:absolute;inset:0;border-radius:28px;overflow:hidden;border:1px solid var(--line2);background:#000}
+.photo img{width:100%;height:100%;object-fit:cover;object-position:top center}
+.photo-fb{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;gap:12px}
+.photo-fb.show{display:flex}
+.photo-fb b{font-size:4.6rem;font-weight:900;letter-spacing:-.02em}
+.photo-fb b span{color:var(--gold)}
+.photo-fb small{font-family:var(--mono);font-size:9px;letter-spacing:.22em;color:var(--muted)}
+.badge-avail{position:absolute;left:-22px;bottom:30px;display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line2);border-radius:14px;padding:11px 18px;font-family:var(--mono);font-size:9.5px;letter-spacing:.22em;box-shadow:0 14px 30px -12px rgba(0,0,0,.6)}
+.badge-avail b{width:8px;height:8px;border-radius:50%;background:var(--gold);animation:blink 1.6s infinite}
+@keyframes blink{50%{opacity:.25}}
+.chip-role{position:absolute;right:-14px;top:26px;display:flex;align-items:center;gap:9px;background:var(--card);border:1px solid var(--line2);border-radius:12px;padding:10px 16px;font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;box-shadow:0 14px 30px -12px rgba(0,0,0,.6)}
+.chip-role i{color:var(--gold);font-size:11px}
+
+/* ============ SECTIONS COMMON ============ */
+section, .footer{padding-block:clamp(80px,10vw,120px)}
+.sec-head{display:flex;align-items:center;gap:16px}
+.sec-tag{font-family:var(--mono);font-size:11px;letter-spacing:.3em;color:var(--gold);white-space:nowrap}
+.sec-head::after{content:"";flex:1;height:1px;background:var(--line)}
+.sec-title{font-size:clamp(1.7rem,3.6vw,2.5rem);font-weight:800;line-height:1.15;margin:14px 0 48px;letter-spacing:-.01em}
+.sec-title em{font-style:normal;color:var(--gold)}
+.js .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.js .reveal.in{opacity:1;transform:none}
+
+/* ============ MY SOFTWARE ============ */
+.soft-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(125px,1fr));gap:14px}
+.soft{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:30px 12px 24px;display:flex;flex-direction:column;align-items:center;gap:15px;transition:transform .3s,border-color .3s,background .3s}
+.soft i{font-size:2.1rem;color:var(--c);opacity:.92}
+.soft span{font-family:var(--mono);font-size:9.5px;letter-spacing:.22em;color:var(--muted)}
+.soft:hover{transform:translateY(-7px);border-color:var(--line2);background:var(--card2)}
+.cta-row{display:flex;justify-content:center;margin-top:58px}
+.btn-big{display:inline-flex;align-items:center;gap:14px;background:var(--gold);color:var(--gold-ink);font-weight:800;font-size:.95rem;letter-spacing:.08em;padding:19px 44px;border-radius:60px;box-shadow:0 16px 36px -14px rgba(0,0,0,.55);transition:transform .25s,filter .2s}
+.btn-big i{transition:transform .25s}
+.btn-big:hover{transform:translateY(-4px);filter:brightness(1.05)}
+.btn-big:hover i{transform:translateY(4px)}
+
+/* ============ WORKS ============ */
+.works-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.work{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;transition:transform .35s,border-color .35s}
+.work:hover{transform:translateY(-8px);border-color:rgba(245,192,78,.45)}
+.work-preview{position:relative;height:290px;display:flex;align-items:center;justify-content:center;background:var(--bg-soft);background-image:radial-gradient(rgba(255,255,255,.05) 1px,transparent 1px);background-size:14px 14px;border-bottom:1px solid var(--line)}
+.work-num{position:absolute;top:14px;right:18px;font-family:var(--mono);font-size:10px;letter-spacing:.24em;color:rgba(255,255,255,.22)}
+.work:hover .mock{transform:translateY(-5px) scale(1.03)}
+.mock{transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+.work-info{padding:24px 26px 26px}
+.work-info h3{font-size:1.12rem;font-weight:700}
+.work-info h3 span{color:var(--gold)}
+.work-info p{margin-top:8px;font-size:.87rem;color:var(--muted)}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.tag{font-family:var(--mono);font-size:8.5px;letter-spacing:.16em;border:1px solid var(--line2);padding:6px 12px;border-radius:20px;color:var(--muted)}
+
+/* --- mock: POS phone --- */
+.mock-phone{width:152px;height:254px;background:#0d0d15;border:1px solid var(--line2);border-radius:22px;padding:12px 10px;display:flex;flex-direction:column;gap:7px;box-shadow:0 20px 40px -14px rgba(0,0,0,.6)}
+.mp-status{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:7px;color:var(--muted);padding:0 4px}
+.mp-status b{width:5px;height:5px;border-radius:50%;background:var(--gold);animation:blink 1.4s infinite}
+.mp-head{display:flex;justify-content:space-between;align-items:center;padding:2px 4px 7px;border-bottom:1px dashed var(--line)}
+.mp-head b{font-size:11px;font-weight:800;letter-spacing:.02em}
+.mp-head b i{font-style:normal;color:var(--gold)}
+.mp-head span{font-family:var(--mono);font-size:6.5px;letter-spacing:.12em;color:var(--muted)}
+.mp-tiles{display:grid;grid-template-columns:1fr 1fr;gap:5px}
+.mp-tile{background:var(--card);border:1px solid var(--line);border-radius:9px;height:46px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px}
+.mp-tile i{font-size:12px;color:var(--muted)}
+.mp-tile span{font-family:var(--mono);font-size:7px;color:var(--gold)}
+.mp-order{flex:1;border:1px dashed var(--line);border-radius:9px;padding:4px 9px;display:flex;flex-direction:column;justify-content:center;gap:4px}
+.mp-line{display:flex;justify-content:space-between;font-family:var(--mono);font-size:7px;color:var(--muted)}
+.mp-line b{color:var(--text);font-weight:500}
+.mp-foot{display:flex;gap:5px}
+.mp-total{flex:1;border:1px solid var(--line2);border-radius:9px;display:flex;align-items:center;justify-content:space-between;padding:0 9px;font-family:var(--mono);font-size:6px;letter-spacing:.1em;color:var(--muted)}
+.mp-total b{font-size:10px;color:var(--text)}
+.mp-charge{background:var(--gold);color:var(--gold-ink);border-radius:9px;display:flex;align-items:center;padding:0 12px;font-size:8px;font-weight:800;letter-spacing:.08em}
+
+/* --- mock: terminal --- */
+.mock-term{width:min(330px,86%);background:#0d0d15;border:1px solid var(--line2);border-radius:14px;overflow:hidden;box-shadow:0 20px 40px -14px rgba(0,0,0,.6)}
+.mt-bar{display:flex;align-items:center;gap:6px;padding:10px 14px;background:var(--card);border-bottom:1px solid var(--line)}
+.mt-dot{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.14)}
+.mt-dot.g{background:var(--gold)}
+.mt-title{margin-left:auto;font-family:var(--mono);font-size:8.5px;letter-spacing:.12em;color:var(--muted)}
+.mt-body{padding:16px 18px 18px;font-family:var(--mono);font-size:10.5px;display:flex;flex-direction:column;gap:8px}
+.mt-ln{color:var(--muted);display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.mt-ln .p{color:var(--gold)}
+.mt-ln .ok{color:var(--text)}
+#typeHash{color:var(--text);letter-spacing:.06em}
+.mt-caret{width:7px;height:12px;background:var(--gold);animation:blink2 1s steps(2) infinite}
+@keyframes blink2{50%{opacity:0}}
+.mt-meter{display:flex;gap:4px;margin-top:4px}
+.mt-meter i{height:4px;flex:1;background:rgba(255,255,255,.12);border-radius:2px}
+.mt-meter i.on{background:var(--gold)}
+
+/* --- mock: dashboard --- */
+.mock-dash{width:min(340px,88%);background:#0d0d15;border:1px solid var(--line2);border-radius:14px;overflow:hidden;box-shadow:0 20px 40px -14px rgba(0,0,0,.6)}
+.md-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:14px 14px 4px}
+.md-stat{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:9px 11px}
+.md-stat span{display:block;font-family:var(--mono);font-size:6.5px;letter-spacing:.18em;color:var(--muted)}
+.md-stat b{font-size:13px;font-weight:700}
+.md-stat b em{font-style:normal;color:var(--gold)}
+.d-chart{display:flex;align-items:flex-end;gap:7px;height:76px;padding:12px 16px 16px}
+.d-chart i{flex:1;height:var(--h);background:rgba(255,255,255,.16);border-radius:4px 4px 0 0;transform:scaleY(0);transform-origin:bottom;transition:transform .8s cubic-bezier(.2,.8,.2,1) var(--d,0s)}
+.d-chart i.hi{background:var(--gold)}
+.d-chart.grow i{transform:scaleY(1)}
+
+/* --- mock: web login --- */
+.mock-web{width:min(340px,88%);background:#0d0d15;border:1px solid var(--line2);border-radius:14px;overflow:hidden;box-shadow:0 20px 40px -14px rgba(0,0,0,.6)}
+.mw-bar{display:flex;align-items:center;gap:6px;padding:10px 12px;background:var(--card);border-bottom:1px solid var(--line)}
+.mw-url{flex:1;margin-left:6px;background:var(--bg);border:1px solid var(--line);border-radius:20px;padding:5px 14px;font-family:var(--mono);font-size:8.5px;color:var(--muted)}
+.mw-body{display:flex;justify-content:center;padding:24px 16px;background:var(--bg-soft);background-image:radial-gradient(rgba(255,255,255,.05) 1px,transparent 1px);background-size:12px 12px}
+.mw-card{width:172px;background:var(--card);border:1px solid var(--line2);border-radius:14px;padding:20px 15px;display:flex;flex-direction:column;align-items:center;gap:10px}
+.w-ava{width:46px;height:46px;border-radius:50%;overflow:hidden;border:2px solid var(--gold);background:#000;display:flex;align-items:center;justify-content:center}
+.w-ava img{width:100%;height:100%;object-fit:cover;object-position:top center}
+.w-ava i{display:none;color:var(--muted);font-size:1.1rem}
+.w-ava.noimg img{display:none}
+.w-ava.noimg i{display:block}
+.w-field{width:100%;height:27px;border:1px solid var(--line);border-radius:8px;background:var(--bg);position:relative}
+.w-field::after{content:"";position:absolute;left:11px;top:50%;transform:translateY(-50%);width:45%;height:6px;border-radius:3px;background:rgba(255,255,255,.14)}
+.w-field.short::after{width:30%}
+.w-btn{width:100%;background:var(--gold);color:var(--gold-ink);text-align:center;border-radius:8px;padding:8px 0;font-size:9px;font-weight:800;letter-spacing:.16em;margin-top:4px}
+
+/* ============ QUOTES ============ */
+.quotes-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.quote{position:relative;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:44px 40px;transition:transform .3s,border-color .3s}
+.quote:hover{transform:translateY(-7px);border-color:rgba(245,192,78,.45)}
+.quote .q-mark{font-size:2rem;color:var(--gold)}
+.quote p{margin-top:16px;font-size:clamp(1.15rem,2.1vw,1.5rem);font-weight:600;line-height:1.45}
+.quote p em{font-style:normal;color:var(--gold)}
+.quote .q-attr{margin-top:24px;font-family:var(--mono);font-size:10px;letter-spacing:.26em;color:var(--muted)}
+
+/* ============ HISTORY ============ */
+.hist-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(40px,6vw,80px);align-items:start}
+.hist-photo{position:relative;width:min(320px,100%)}
+.hist-photo .photo{position:relative;aspect-ratio:3/4;border-radius:22px}
+.hist-photo .photo-frame::before{transform:translate(14px,14px);border-radius:22px}
+.hist-chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:30px}
+.hist-chip{font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;border:1px solid var(--line2);padding:9px 14px;border-radius:30px;color:var(--muted)}
+.hist-text p{color:var(--muted);font-size:.97rem}
+.hist-text p+p{margin-top:18px}
+.hist-text p b{color:var(--text);font-weight:600}
+.strengths{display:flex;flex-wrap:wrap;gap:9px;margin-top:28px}
+.strength{font-size:.75rem;font-weight:600;letter-spacing:.1em;background:var(--card);border:1px solid var(--line);padding:8px 16px;border-radius:30px;color:var(--muted);transition:background .25s,color .25s,border-color .25s}
+.strength:hover{background:var(--gold);border-color:var(--gold);color:var(--gold-ink)}
+.stats{display:flex;border:1px solid var(--line);border-radius:18px;margin-top:32px;overflow:hidden}
+.stat{flex:1;padding:20px 12px;text-align:center}
+.stat+.stat{border-left:1px solid var(--line)}
+.stat b{display:block;font-size:1.6rem;font-weight:800;color:var(--gold);line-height:1.1}
+.stat span{display:block;margin-top:6px;font-family:var(--mono);font-size:8.5px;letter-spacing:.2em;color:var(--muted)}
+.langs{margin-top:24px;font-family:var(--mono);font-size:10px;letter-spacing:.22em;color:var(--muted)}
+.langs i{color:var(--gold);margin-right:8px}
+
+/* ============ SERVICES ============ */
+.svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+.svc{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:32px 28px;transition:transform .3s,border-color .3s}
+.svc:hover{transform:translateY(-7px);border-color:rgba(245,192,78,.45)}
+.svc-ic{width:54px;height:54px;border-radius:15px;background:var(--bg-soft);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:1.3rem;margin-bottom:20px;transition:background .3s,color .3s,transform .3s}
+.svc:hover .svc-ic{background:var(--gold);color:var(--gold-ink);transform:rotate(-6deg) scale(1.05)}
+.svc h3{font-size:1.05rem;font-weight:700}
+.svc p{margin-top:10px;font-size:.86rem;color:var(--muted)}
+
+/* ============ CERTIFICATES ============ */
+.certificate-card{max-width:920px;margin-inline:auto;background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;transition:border-color .3s,transform .3s}
+.certificate-card + .certificate-card{margin-top:20px}
+.certificate-card:hover{border-color:rgba(245,192,78,.45);transform:translateY(-5px)}
+.certificate-preview{display:block;background:#fff;padding:12px}
+.certificate-preview img{width:100%;height:auto}
+.certificate-info{padding:22px 26px 26px}
+.certificate-info h3{font-size:1.05rem;font-weight:700}
+.certificate-info p{margin-top:6px;color:var(--muted);font-size:.86rem}
+.certificate-info a{display:inline-flex;align-items:center;gap:9px;margin-top:16px;color:var(--gold);font-size:.75rem;font-weight:700;letter-spacing:.12em}
+
+/* ============ FOOTER / CONTACT ============ */
+.footer{background:var(--bg-soft);border-top:1px solid var(--line)}
+.email-row{display:flex;align-items:center;gap:18px;margin-top:36px;flex-wrap:wrap}
+.email-big{display:inline-flex;align-items:center;gap:16px;font-size:clamp(1.15rem,3.3vw,2.1rem);font-weight:700;position:relative;transition:color .25s}
+.email-big i{font-size:.5em;color:var(--gold);transition:transform .25s}
+.email-big::after{content:"";position:absolute;left:0;bottom:-8px;height:2px;width:100%;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+.email-big:hover{color:var(--gold)}
+.email-big:hover::after{transform:scaleX(1)}
+.email-big:hover i{transform:translateX(6px)}
+.copy-btn{width:52px;height:52px;border-radius:50%;border:1px solid var(--line2);background:none;color:var(--muted);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .25s,color .25s,border-color .25s,transform .2s}
+.copy-btn:hover{background:var(--gold);border-color:var(--gold);color:var(--gold-ink);transform:translateY(-3px)}
+.foot-grid{margin-top:56px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:0;overflow:hidden}
+.foot-grid .fg{background:var(--bg-soft);padding:26px 24px}
+.fg span{display:block;font-family:var(--mono);font-size:9px;letter-spacing:.26em;color:var(--muted);margin-bottom:12px}
+.fg b,.fg a{display:flex;align-items:center;gap:12px;font-weight:600;font-size:.95rem;transition:color .25s}
+.fg i{color:var(--gold);font-size:.85rem;width:18px;text-align:center}
+.fg a:hover{color:var(--gold)}
+.foot-bottom{margin-top:52px;padding-top:28px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--muted)}
+.to-top{display:flex;align-items:center;gap:9px;transition:color .25s}
+.to-top:hover{color:var(--gold)}
+
+/* ============ TOAST ============ */
+#toast{position:fixed;bottom:28px;left:50%;transform:translate(-50%,22px);z-index:100;display:flex;align-items:center;gap:12px;background:var(--card2);border:1px solid var(--gold);border-radius:14px;padding:15px 22px;font-size:.85rem;font-weight:500;box-shadow:0 18px 40px rgba(0,0,0,.5);opacity:0;pointer-events:none;transition:opacity .3s,transform .3s}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+#toast i{color:var(--gold)}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:960px){
+  .hero{grid-template-columns:1fr;padding-top:120px;gap:70px}
+  .hero-photo{justify-self:start;margin-left:10px}
+  .hist-grid{grid-template-columns:1fr}
+  .works-grid{grid-template-columns:1fr}
+  .quotes-grid{grid-template-columns:1fr}
+}
+@media (max-width:760px){
+  .nav-links{display:none}
+  .nav-hire{display:none}
+  .burger{display:flex}
+  .work-preview{height:270px}
+  .stats{flex-direction:column}
+  .stat+.stat{border-left:0;border-top:1px solid var(--line)}
+}
+@media (prefers-reduced-motion:reduce){
+  h1 .line span{animation-duration:.01s}
+  .hero-photo{animation-duration:.01s}
+  .js .reveal{transition-duration:.01s}
+  .d-chart i{transition-duration:.01s}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<nav class="nav" id="nav">
+  <a href="#home" class="logo">MEDEL<span>.</span></a>
+  <div class="nav-links">
+    <a href="#home" class="active">Home</a>
+    <a href="#quotes">Quotes</a>
+    <a href="#history">History</a>
+    <a href="#services">Services</a>
+    <a href="#certificates">Certificates</a>
+  </div>
+  <div class="nav-right">
+    <a href="#contact" class="nav-hire">HIRE ME</a>
+    <button class="burger" id="burger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="mmenu" id="mmenu">
+  <a href="#home" style="transition-delay:.05s">Home</a>
+  <a href="#quotes" style="transition-delay:.1s">Quotes</a>
+  <a href="#history" style="transition-delay:.15s">History</a>
+  <a href="#services" style="transition-delay:.2s">Services</a>
+  <a href="#certificates" style="transition-delay:.25s">Certificates</a>
+  <a href="#contact" style="transition-delay:.3s">Contact</a>
+  <span class="mm-mail">CALIMPASMEDEL@GMAIL.COM</span>
+</div>
+
+<!-- ================= HERO / HOME ================= -->
+<header class="hero" id="home">
+  <div>
+    <div class="hello">// HELLO WORLD, I AM</div>
+    <h1>
+      <span class="line"><span>PORT</span></span>
+      <span class="line"><span>FOLIO</span></span>
+    </h1>
+    <div class="hero-name">Medel A. Calimpas <span>— "Meds"</span></div>
+    <div class="hero-role">AI DEVELOPER<i class="fa-solid fa-circle"></i>SOFTWARE ENGINEER<i class="fa-solid fa-circle"></i>WEB &amp; SYSTEMS DEV</div>
+    <p class="hero-p">
+      I design and build software that has to work in the real world — <b>point-of-sale counters,
+      inventory backrooms, login screens, and AI-powered tools</b>. From databases to interfaces,
+      I turn ideas into systems that are fast, secure, and genuinely useful.
+    </p>
+    <div class="socials">
+      <a href="https://www.facebook.com/search/people/?q=Medel%20A%C3%B1os%20Calimpas" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="https://wa.me/639922575252" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+      <a href="mailto:calimpasmedel@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+      <a href="tel:+639922575252" aria-label="Phone"><i class="fa-solid fa-phone"></i></a>
+    </div>
+    <div class="btns">
+      <a href="#contact" class="btn btn-gold">HIRE ME <i class="fa-solid fa-arrow-right"></i></a>
+      <a href="#history" class="btn btn-ghost">ABOUT ME <i class="fa-solid fa-user"></i></a>
+      <a href="https://del-botkey.ai.studio/" class="btn btn-gold">TRY AI CHATBOT <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+    </div>
+  </div>
+
+  <div class="hero-photo">
+    <div class="photo-frame">
+      <div class="photo">
+        <img src="medel.png" alt="Medel A. Calimpas" data-fb="heroFB">
+        <div class="photo-fb" id="heroFB"><b>MC<span>.</span></b><small>// PLACE medel.png BESIDE THIS FILE</small></div>
+      </div>
+      <div class="chip-role"><i class="fa-solid fa-brain"></i>AI DEVELOPER</div>
+      <div class="badge-avail"><b></b>OPEN TO WORK</div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= MY SOFTWARE ================= -->
+<section id="software">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-tag">01 — MY SOFTWARE</span></div>
+    <h2 class="sec-title reveal">Tools I reach for <em>every day</em></h2>
+
+    <div class="soft-grid reveal">
+      <div class="soft" style="--c:#f89820"><i class="fa-brands fa-java"></i><span>JAVA</span></div>
+      <div class="soft" style="--c:#4b8bbe"><i class="fa-brands fa-python"></i><span>PYTHON</span></div>
+      <div class="soft" style="--c:#f7df1e"><i class="fa-brands fa-js"></i><span>JAVASCRIPT</span></div>
+      <div class="soft" style="--c:#e34f26"><i class="fa-brands fa-html5"></i><span>HTML5</span></div>
+      <div class="soft" style="--c:#3d9be9"><i class="fa-brands fa-css3-alt"></i><span>CSS3</span></div>
+      <div class="soft" style="--c:#00a4b8"><i class="fa-solid fa-database"></i><span>DATABASES</span></div>
+      <div class="soft" style="--c:#f05033"><i class="fa-brands fa-git-alt"></i><span>GIT</span></div>
+      <div class="soft" style="--c:#3fb9ff"><i class="fa-solid fa-code"></i><span>VS CODE</span></div>
+    </div>
+
+    <div class="cta-row reveal">
+      <a href="#works" class="btn-big">SEE MY PROJECTS <i class="fa-solid fa-arrow-down"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WORKS ================= -->
+<section id="works">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-tag">02 — SELECTED WORK</span></div>
+    <h2 class="sec-title reveal">Systems I've <em>built</em></h2>
+
+    <div class="works-grid">
+
+      <!-- POS -->
+      <article class="work reveal">
+        <div class="work-preview">
+          <span class="work-num">N°01</span>
+          <div class="mock mock-phone">
+            <div class="mp-status"><span>09:41</span><b></b><span><i class="fa-solid fa-wifi"></i></span></div>
+            <div class="mp-head"><b>MEDS<i>·POS</i></b><span>TBL-04</span></div>
+            <div class="mp-tiles">
+              <div class="mp-tile"><i class="fa-solid fa-mug-hot"></i><span>90</span></div>
+              <div class="mp-tile"><i class="fa-solid fa-burger"></i><span>150</span></div>
+              <div class="mp-tile"><i class="fa-solid fa-cookie-bite"></i><span>60</span></div>
+              <div class="mp-tile"><i class="fa-solid fa-bottle-water"></i><span>50</span></div>
+            </div>
+            <div class="mp-order">
+              <div class="mp-line"><b>Latte ×2</b><span>240</span></div>
+              <div class="mp-line"><b>Burger ×1</b><span>150</span></div>
+            </div>
+            <div class="mp-foot">
+              <div class="mp-total"><span>TOTAL</span><b>390</b></div>
+              <div class="mp-charge">CHARGE</div>
+            </div>
+          </div>
+        </div>
+        <div class="work-info">
+          <h3>MEDS<span>·POS</span> — Point of Sale System</h3>
+          <p>A fast, touch-first POS terminal built for real counter work — one-tap ordering, live totals, quantity control, and instant receipts.</p>
+          <div class="tags"><span class="tag">POS</span><span class="tag">UI DESIGN</span><span class="tag">DATABASES</span></div>
+        </div>
+      </article>
+
+      <!-- AUTH -->
+      <article class="work reveal">
+        <div class="work-preview">
+          <span class="work-num">N°02</span>
+          <div class="mock mock-term">
+            <div class="mt-bar"><span class="mt-dot g"></span><span class="mt-dot"></span><span class="mt-dot"></span><span class="mt-title">secureauth — meds@local</span></div>
+            <div class="mt-body">
+              <div class="mt-ln"><span class="p">$</span><span class="ok">meds auth --hash "••••••••"</span></div>
+              <div class="mt-ln"><span>salt :: 04x7f — ok</span></div>
+              <div class="mt-ln"><span>digest »</span><span id="typeHash"></span><span class="mt-caret"></span></div>
+              <div class="mt-meter"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div>
+              <div class="mt-ln"><span>strength :: <span class="ok">STRONG</span></span></div>
+            </div>
+          </div>
+        </div>
+        <div class="work-info">
+          <h3>Secure<span>Auth</span> — Login &amp; Security</h3>
+          <p>Secure authentication flows with salted hashing, live strength scoring, and entropy analysis — computed entirely client-side.</p>
+          <div class="tags"><span class="tag">SECURITY</span><span class="tag">AUTHENTICATION</span><span class="tag">HASHING</span></div>
+        </div>
+      </article>
+
+      <!-- INVENTORY -->
+      <article class="work reveal">
+        <div class="work-preview">
+          <span class="work-num">N°03</span>
+          <div class="mock mock-dash">
+            <div class="mt-bar"><span class="mt-dot g"></span><span class="mt-dot"></span><span class="mt-dot"></span><span class="mt-title">stock-control — dashboard</span></div>
+            <div class="md-stats">
+              <div class="md-stat"><span>ITEMS</span><b>128</b></div>
+              <div class="md-stat"><span>LOW STOCK</span><b><em>9</em></b></div>
+              <div class="md-stat"><span>TODAY</span><b>₱4.2k</b></div>
+            </div>
+            <div class="d-chart" id="dChart">
+              <i style="--h:42%"></i>
+              <i style="--h:66%;--d:.08s"></i>
+              <i style="--h:52%;--d:.16s"></i>
+              <i class="hi" style="--h:90%;--d:.24s"></i>
+              <i style="--h:58%;--d:.32s"></i>
+              <i style="--h:74%;--d:.4s"></i>
+              <i style="--h:48%;--d:.48s"></i>
+            </div>
+          </div>
+        </div>
+        <div class="work-info">
+          <h3>Stock<span>Control</span> — Inventory System</h3>
+          <p>Inventory management with live stock levels, low-stock alerts, and daily sales at a glance — accurate in the backroom, simple on screen.</p>
+          <div class="tags"><span class="tag">INVENTORY</span><span class="tag">DASHBOARD</span><span class="tag">SQL</span></div>
+        </div>
+      </article>
+
+      <!-- WEB -->
+      <article class="work reveal">
+        <div class="work-preview">
+          <span class="work-num">N°04</span>
+          <div class="mock mock-web">
+            <div class="mw-bar"><span class="mt-dot g"></span><span class="mt-dot"></span><span class="mt-dot"></span><div class="mw-url">medel.systems/login</div></div>
+            <div class="mw-body">
+              <div class="mw-card">
+                <span class="w-ava"><img src="medel.png" alt="" onerror="this.closest('.w-ava').classList.add('noimg')"><i class="fa-solid fa-user"></i></span>
+                <div class="w-field"></div>
+                <div class="w-field short"></div>
+                <div class="w-btn">SIGN IN</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="work-info">
+          <h3>Admin<span>Portal</span> — Web System</h3>
+          <p>A clean, secure admin portal: role-based login, user management, and full system controls — designed to be used, not just looked at.</p>
+          <div class="tags"><span class="tag">WEB APP</span><span class="tag">ADMIN</span><span class="tag">SYSTEM DESIGN</span></div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= QUOTES ================= -->
+<section id="quotes">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-tag">03 — QUOTES</span></div>
+    <h2 class="sec-title reveal">Words I <em>live by</em></h2>
+
+    <div class="quotes-grid">
+      <div class="quote reveal">
+        <i class="fa-solid fa-quote-left q-mark"></i>
+        <p>"Technology<em> empowers us to learn without limits</em>, create without barriers, <em>and connect without borders</em>."</p>
+        <div class="q-attr">— PERSONAL PHILOSOPHY · THE CASE FOR STAYING CAPABLE</div>
+      </div>
+      <div class="quote reveal">
+        <i class="fa-solid fa-quote-left q-mark"></i>
+        <p>"For with God nothing shall be <em>impossible</em>."</p>
+        <div class="q-attr">— LUKE 1:37 · FAVORITE BIBLE VERSE</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HISTORY ================= -->
+<section id="history">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-tag">04 — HISTORY</span></div>
+    <h2 class="sec-title reveal">The story <em>so far</em></h2>
+
+    <div class="hist-grid">
+      <div class="reveal">
+        <div class="hist-photo">
+          <div class="photo-frame">
+            <div class="photo">
+              <img src="medel.png" alt="Medel A. Calimpas" data-fb="histFB">
+              <div class="photo-fb" id="histFB"><b>MC<span>.</span></b><small>// medel.png</small></div>
+            </div>
+          </div>
+        </div>
+        <div class="hist-chips">
+          <span class="hist-chip">22 YEARS OLD</span>
+          <span class="hist-chip">PHILIPPINES</span>
+          <span class="hist-chip">SEVENTH-DAY ADVENTIST</span>
+          <span class="hist-chip">SINGLE</span>
+        </div>
+      </div>
+
+      <div class="hist-text reveal">
+        <p>Hi! I'm <b>Medel</b> — a 22-year-old developer from the Philippines with a strong interest
+        in <b>Artificial Intelligence, Software Engineering, Web Development, Point-of-Sale Systems,
+        Database Development, Inventory Management, and Application Security</b>.</p>
+
+        <p>My journey started with curiosity: building small systems, designing secure login and
+        authentication interfaces, and creating practical software for real-world needs. Since then,
+        I've grown into a developer who enjoys <b>transforming ideas into functional, efficient, and
+        user-friendly digital solutions</b> — because every problem is an opportunity to build a
+        better solution.</p>
+
+        <p>I approach every task with determination and attention to detail — comfortable learning
+        new technologies, solving technical problems, and taking on challenging projects, always
+        valuing continuous improvement.</p>
+
+        <div class="strengths">
+          <span class="strength">RESPONSIBLE</span>
+          <span class="strength">PATIENT</span>
+          <span class="strength">HARDWORKING</span>
+          <span class="strength">ADAPTABLE</span>
+          <span class="strength">RESOURCEFUL</span>
+          <span class="strength">PROBLEM SOLVER</span>
+          <span class="strength">STRATEGIC</span>
+          <span class="strength">VERSATILE</span>
+        </div>
+
+        <div class="stats">
+          <div class="stat"><b>12+</b><span>CORE SKILLS</span></div>
+          <div class="stat"><b>4</b><span>SPOKEN LANGUAGES</span></div>
+          <div class="stat"><b>1</b><span>MISSION — BE USEFUL</span></div>
+        </div>
+
+        <div class="langs"><i class="fa-solid fa-language"></i>CEBUANO · TAGALOG · ILONGO · ENGLISH</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SERVICES ================= -->
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-tag">05 — SERVICES</span></div>
+    <h2 class="sec-title reveal">What I can <em>do for you</em></h2>
+
+    <div class="svc-grid">
+      <div class="svc reveal">
+        <div class="svc-ic"><i class="fa-solid fa-brain"></i></div>
+        <h3>AI Development</h3>
+        <p>Intelligent features and applied AI, built into products that solve real problems.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-ic"><i class="fa-solid fa-gears"></i></div>
+        <h3>Software Engineering</h3>
+        <p>Complete systems planned, built, and maintained — from first idea to deployment.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-ic"><i class="fa-solid fa-globe"></i></div>
+        <h3>Web Development</h3>
+        <p>Fast, functional, and user-friendly websites and web applications.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-ic"><i class="fa-solid fa-cash-register"></i></div>
+        <h3>POS &amp; Inventory Systems</h3>
+        <p>Point-of-sale and inventory systems designed for daily, real-world counter use.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-ic"><i class="fa-solid fa-database"></i></div>
+        <h3>Database Development</h3>
+        <p>Well-structured data — designed, managed, and optimized for reliability.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-ic"><i class="fa-solid fa-shield-halved"></i></div>
+        <h3>Authentication &amp; Security</h3>
+        <p>Secure login systems and hardened applications that protect real users.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CERTIFICATES ================= -->
+<section id="certificates">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-tag">07 — MY CERTIFICATES</span></div>
+    <h2 class="sec-title reveal">My <em>Certificates</em></h2>
+    <article class="certificate-card reveal">
+      <a class="certificate-preview" href="Cisco%20Certificate.png" target="_blank" rel="noopener" aria-label="Open the full Cisco certificate image">
+        <img src="Cisco%20Certificate.png" alt="Cisco Networking Academy certificate awarded to Medel Calimpas for completing Getting Started with Cisco Packet Tracer">
+      </a>
+      <div class="certificate-info">
+        <h3>Getting Started with Cisco Packet Tracer</h3>
+        <p>Cisco Networking Academy</p>
+        <a href="Cisco%20Certificate.png" target="_blank" rel="noopener">VIEW FULL CERTIFICATE <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+      </div>
+    </article>
+    <article class="certificate-card reveal">
+      <a class="certificate-preview" href="sui.jpg" target="_blank" rel="noopener" aria-label="Open the full DEVCON Bits of Light Roadshow certificate">
+        <img src="sui.jpg" alt="Certificate of participation awarded to Medel A. Calimpas for the DEVCON Bits of Light Roadshow">
+      </a>
+      <div class="certificate-info">
+        <h3>DEVCON Bits of Light Roadshow</h3>
+        <p>DEVCON Bukidnon Chapter</p>
+        <a href="sui.jpg" target="_blank" rel="noopener">VIEW FULL CERTIFICATE <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ================= FOOTER / CONTACT ================= -->
+<footer class="footer" id="contact">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-tag">08 — CONTACT</span></div>
+    <h2 class="sec-title reveal">Let's build something <em>useful</em>.</h2>
+
+    <div class="email-row reveal">
+      <a class="email-big" href="mailto:calimpasmedel@gmail.com">calimpasmedel@gmail.com <i class="fa-solid fa-arrow-right"></i></a>
+      <button class="copy-btn" id="copyBtn" aria-label="Copy email address"><i class="fa-regular fa-copy"></i></button>
+    </div>
+
+    <div class="foot-grid reveal">
+      <div class="fg"><span>PHONE / WHATSAPP</span>
+        <a href="tel:+639922575252"><i class="fa-solid fa-phone"></i>0992 257 5252</a></div>
+      <div class="fg"><span>FACEBOOK</span>
+        <a href="https://www.facebook.com/search/people/?q=Medel%20A%C3%B1os%20Calimpas" target="_blank" rel="noopener"><i class="fa-brands fa-facebook-f"></i>Medel Años Calimpas</a></div>
+      <div class="fg"><span>KNOWN AS</span>
+        <b><i class="fa-solid fa-circle-user"></i>"Meds"</b></div>
+      <div class="fg"><span>LOCATION</span>
+        <b><i class="fa-solid fa-location-dot"></i>Philippines</b></div>
+    </div>
+
+    <div class="foot-bottom">
+      <span>© <span id="yr">2025</span> MEDEL A. CALIMPAS</span>
+      <span>BUILT BY HAND — NO TEMPLATES</span>
+      <a href="#home" class="to-top">BACK TO TOP <i class="fa-solid fa-arrow-up"></i></a>
+    </div>
+  </div>
+</footer>
+
+<div id="toast" role="status"><i class="fa-solid fa-circle-check"></i><span id="toastMsg"></span></div>
+
+<script>
+(function(){
+"use strict";
+const $=(s,c=document)=>c.querySelector(s);
+
+/* ---------- nav scrolled state ---------- */
+const nav=$("#nav");
+addEventListener("scroll",()=>nav.classList.toggle("scrolled",scrollY>30),{passive:true});
+
+/* ---------- mobile menu ---------- */
+const burger=$("#burger"), mmenu=$("#mmenu");
+burger.addEventListener("click",()=>{
+  const open=mmenu.classList.toggle("open");
+  burger.classList.toggle("on",open);
+  document.body.style.overflow=open?"hidden":"";
+});
+mmenu.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{
+  mmenu.classList.remove("open"); burger.classList.remove("on");
+  document.body.style.overflow="";
+}));
+
+/* ---------- scrollspy (Home / Quotes / History / Services) ---------- */
+const navMap={};
+document.querySelectorAll(".nav-links a").forEach(a=>navMap[a.getAttribute("href").slice(1)]=a);
+const spy=new IntersectionObserver(es=>{
+  es.forEach(e=>{
+    if(e.isIntersecting){
+      Object.values(navMap).forEach(a=>a.classList.remove("active"));
+      navMap[e.target.id]&&navMap[e.target.classList.contains("hero")?"home":e.target.id]&&navMap[e.target.id].classList.add("active");
+    }
+  });
+},{rootMargin:"-42% 0px -52%"});
+["home","quotes","history","services","certificates"].forEach(id=>{
+  const s=document.getElementById(id); s&&spy.observe(s);
+});
+
+/* ---------- reveal on scroll ---------- */
+const ro=new IntersectionObserver(es=>{
+  es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add("in"); ro.unobserve(e.target);} });
+},{threshold:.14});
+document.querySelectorAll(".reveal").forEach(el=>ro.observe(el));
+
+/* ---------- animate dashboard bars ---------- */
+const chart=$("#dChart");
+if(chart){
+  const co=new IntersectionObserver(es=>{
+    es.forEach(e=>{ if(e.isIntersecting){ chart.classList.add("grow"); co.disconnect(); } });
+  },{threshold:.45});
+  co.observe(chart);
+}
+
+/* ---------- terminal hash typing loop ---------- */
+const typeEl=$("#typeHash");
+const samples=["A4F2·9B31·7C0E·5D68","7E11·C0A9·3F42·8B5D","D90C·4E77·A1B3·6F2A","B639·F08A·2C45·E1D7"];
+let si=0;
+function typeLoop(){
+  const s=samples[si]; let i=0; typeEl.textContent="";
+  const t=setInterval(()=>{
+    typeEl.textContent=s.slice(0,++i);
+    if(i>=s.length){
+      clearInterval(t);
+      setTimeout(()=>{ si=(si+1)%samples.length; typeLoop(); },2200);
+    }
+  },55);
+}
+typeLoop();
+
+/* ---------- image fallbacks ---------- */
+document.querySelectorAll('img[data-fb]').forEach(img=>{
+  img.addEventListener("error",()=>{
+    img.remove();
+    const fb=document.getElementById(img.dataset.fb);
+    fb&&fb.classList.add("show");
+  });
+});
+
+/* ---------- toast + copy email ---------- */
+const toast=$("#toast"), toastMsg=$("#toastMsg");
+let toastT;
+function showToast(msg,icon){
+  toast.querySelector("i").className="fa-solid "+icon;
+  toastMsg.textContent=msg;
+  toast.classList.add("show");
+  clearTimeout(toastT);
+  toastT=setTimeout(()=>toast.classList.remove("show"),2600);
+}
+ $("#copyBtn").addEventListener("click",async()=>{
+  try{
+    await navigator.clipboard.writeText("calimpasmedel@gmail.com");
+    showToast("Email copied to clipboard","fa-circle-check");
+  }catch{
+    showToast("Copy not available here","fa-circle-exclamation");
+  }
+});
+
+ $("#yr").textContent=new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
